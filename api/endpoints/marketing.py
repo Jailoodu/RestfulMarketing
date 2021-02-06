@@ -5,27 +5,32 @@ from werkzeug.utils import secure_filename
 from api.implementation import upload_file, download_file
 
 # namespace sets the endpoints with a prefix of /users
-namespace = api.namespace('marketing', description='Operations on marketing resources')
+namespace = api.namespace('files', description='Operations on marketing resources')
 
-@namespace.route('/') 
-class MarketingCollection(Resource):
+@namespace.route('/upload') 
+class MarketingCollectionUpload(Resource):
     @api.doc(responses = {201: 'File uploaded', 400: 'Error occurred' })
     def post(self):
         """
         Upload file
         """
         if request.is_json and request.json["file"]:
-            upload_file(request.json)
-            return None, 201
+            rc = upload_file(request.json)
+            if rc == 1:
+                return None, 400
+            else:
+                return None, 201
         return None, 400
 
+@namespace.route('/download')
+class MarketingCollectionDownload(Resource):
     @api.doc(responses = {200: 'File fetched', 400: 'Error occurred' })
     def get(self):
         """
         Download file
         """
-        if request.is_json and request.json["file"]:
-            download_file(request.json)
-            return None, 200
-        return None, 400
+        rc = download_file(request.json)
+        if rc == 1:
+            return None, 400
+        return None, 200
 
