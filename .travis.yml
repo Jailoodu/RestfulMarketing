@@ -1,13 +1,9 @@
-# Disable sudo to speed up the build
-sudo: false
+os: windows
 
-# Set the build language to Python
 language: python
 
-# Set the python version to 2.7
-python: 3.6
+python: 3.7
 
-# Install the codecov pip dependency
 install:
   - pip install pytest
   - pip install pytest-cov
@@ -15,7 +11,6 @@ install:
   - pip install flask
   - pip install werkzeug
 
-# Run the unit test
 script:
   - python --version
   - python -m pytest --cov=api tests/
