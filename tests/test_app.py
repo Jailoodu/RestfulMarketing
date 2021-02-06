@@ -10,7 +10,7 @@ start_app(flask_app)
 
 def test_download():
     """
-    GET /marketing/
+    GET /api/files/download
     """
     # A test client configured for testing
     with flask_app.test_client() as test_client:
@@ -22,9 +22,9 @@ def test_download():
         if path.exists("p1.rb"):
             os.remove("p1.rb")
 
-def test_download_fail():
+def test_download_negative():
     """
-    GET /marketing/
+    GET /api/files/download
     """
     # A test client configured for testing
     with flask_app.test_client() as test_client:
@@ -35,7 +35,7 @@ def test_download_fail():
         
 def test_upload():
     """
-    POST /marketing/
+    POST /api/files/upload
     """
     # A test client configured for testing
     with flask_app.test_client() as test_client:
@@ -43,12 +43,32 @@ def test_upload():
         assert response.status_code == 201
         delete(".gitignore")
 
-def test_upload_fail():
+def test_upload_negative():
     """
-    POST /marketing/
+    POST /api/files/upload
     """
     # A test client configured for testing
     with flask_app.test_client() as test_client:
         response = test_client.post('/api/files/upload', json={"file":"hello.txt"})
         assert response.status_code == 400
         assert response.status == "400 BAD REQUEST"
+
+def test_delete_file_fail():
+    """
+    DELETE /api/files/{file_id}
+    """
+    # A test client configured for testing
+    with flask_app.test_client() as test_client:
+        response = test_client.delete('/api/files/file_id')
+        assert response.status_code == 204
+        assert response.status == "204 No Content"
+
+def test_edit_fail():
+    """
+    PUT /api/marketing/edit
+    """
+    # A test client configured for testing
+    with flask_app.test_client() as test_client:
+        response = test_client.put('/api/marketing/edit', json={"file":"img.jpg"})
+        assert response.status_code == 204
+        assert response.status == "204 No Content"
