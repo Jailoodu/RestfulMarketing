@@ -31,7 +31,7 @@ def test_download_fail():
         response = test_client.get('/api/files/download', json={"file":"nothing.txt"})
         assert response.status_code == 400
         assert response.status == "400 BAD REQUEST"
-        assert path.exists("p1.rb") == False
+        os.remove("nothing.txt")
         
 def test_upload():
     """
