@@ -72,3 +72,13 @@ def test_edit_fail():
         response = test_client.put('/api/marketing/edit', json={"file":"img.jpg"})
         assert response.status_code == 204
         assert response.status == "204 No Content"
+
+def test_post_content_fail():
+    """
+    POST /api/marketing/post
+    """
+    # A test client configured for testing
+    with flask_app.test_client() as test_client:
+        response = test_client.put('/api/marketing/post', json={"platform":"reddit", "id": "img.jpg"})
+        assert response.status_code == 201
+        assert response.status == "201 Created"
