@@ -14,13 +14,13 @@ def test_download():
     """
     # A test client configured for testing
     with flask_app.test_client() as test_client:
-        response = test_client.get('/api/files/download', json={"file":"p1.rb"})
+        response = test_client.get('/api/files/download', json={"file":"data.json"})
         assert response.status_code == 200
         assert response.status == "200 OK"
-        assert path.exists("p1.rb")
+        assert path.exists("data.json")
         
-        if path.exists("p1.rb"):
-            os.remove("p1.rb")
+        if path.exists("data.json"):
+            os.remove("data.json")
 
 def test_download_negative():
     """
