@@ -18,4 +18,4 @@ install:
 
 script:
   - python --version
-  - python -m pytest --cov=api tests/ --ignore tests/test_stress.py
+  - python -m pytest --cov-report html:./docs/coverage.html --cov=api tests/ --ignore tests/test_stress.py

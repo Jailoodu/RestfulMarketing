@@ -83,7 +83,7 @@ This project is built upon RESTful architecture, therefore it is ideal if one is
 [Pytest](https://docs.pytest.org/en/stable/) was utilized to test this repository. The unit tests and acceptance tests can be found in `./tests/test_app.py`, while the 
 stress tests can be found in `./tests/test_stress.py`. 
 
-To run the tests, the serviceAccount.json.enc file needs to be decrypted, please message the developers to request the decryption command. Then run the command `python -m pytest --cov=api tests/`.
+To run the tests, the serviceAccount.json.enc file needs to be decrypted, please message the developers to request the decryption command. Then run the command `python -m pytest --cov=api tests/`. A coverage report will be generated within `./docs/coverage.html` once the tests are completed.
 
 Travis CI is being utilized to automate testing, you can find the instance [here](https://travis-ci.org/github/Jailoodu/RestfulMarketing).
 
