@@ -87,6 +87,8 @@ To run the tests, the serviceAccount.json.enc file needs to be decrypted, please
 
 Travis CI is being utilized to automate testing, you can find the instance [here](https://travis-ci.org/github/Jailoodu/RestfulMarketing).
 
+**For the Professor and TAs of 4ZP6**: you've been given permission to this GitHub repository, therefore if you log into travis-ci.org, you will see the builds for this project, and be able to start a new one to run the tests. 
+
 A static copy of the coverage report is located at `./docs/coverage.png`.
 
 
