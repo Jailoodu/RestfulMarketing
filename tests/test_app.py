@@ -11,6 +11,7 @@ start_app(flask_app)
 def test_download():
     """
     GET /api/files/download
+    Requirements: F-34
     """
     # A test client configured for testing
     with flask_app.test_client() as test_client:
@@ -25,6 +26,7 @@ def test_download():
 def test_download_negative():
     """
     GET /api/files/download
+    Requirements: F-34
     """
     # A test client configured for testing
     with flask_app.test_client() as test_client:
@@ -36,6 +38,7 @@ def test_download_negative():
 def test_upload():
     """
     POST /api/files/upload
+    Requirements: F-34
     """
     # A test client configured for testing
     with flask_app.test_client() as test_client:
@@ -46,6 +49,7 @@ def test_upload():
 def test_upload_negative():
     """
     POST /api/files/upload
+    Requirements: F-34
     """
     # A test client configured for testing
     with flask_app.test_client() as test_client:
@@ -56,6 +60,7 @@ def test_upload_negative():
 def test_delete_file_fail():
     """
     DELETE /api/files/{file_id}
+    Requirements: F-34
     """
     # A test client configured for testing
     with flask_app.test_client() as test_client:
@@ -66,6 +71,7 @@ def test_delete_file_fail():
 def test_edit_fail():
     """
     PUT /api/marketing/edit
+    Requirements: F-34
     """
     # A test client configured for testing
     with flask_app.test_client() as test_client:
