@@ -17,7 +17,7 @@ def start_app(app):
 
 def main():
     start_app(app)
-    app.run(host ='127.0.0.1', port = 5000)
+    app.run(host ='0.0.0.0', port = 5000)
 
 # main function is automatically run
 if __name__ == '__main__':

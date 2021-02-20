@@ -3,7 +3,7 @@ from flask import json
 from app import app, start_app
 import os.path
 from os import path
-from api.storage_utils import delete
+from api.storage_utils import delete 
 
 flask_app = app
 start_app(flask_app)
