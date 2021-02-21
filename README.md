@@ -60,6 +60,14 @@ RestfulMarketing is a REST API that allows event organizers to keep track of mar
 
 To get a local copy up and running follow these simple steps.
 
+### Prerequisites
+
+In order to run the project, you will need Docker installed.
+* Docker
+  ```sh
+  Instructions: https://docs.docker.com/get-docker/
+  ```
+  
 ### Installation
 
 1. Clone the repo.
