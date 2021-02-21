@@ -102,7 +102,7 @@ This project is built upon RESTful architecture, therefore it is ideal if one is
 [Pytest](https://docs.pytest.org/en/stable/) was utilized to test this repository. The unit tests and acceptance tests can be found in `./tests/test_app.py`, while the 
 stress tests can be found in `./tests/test_stress.py`. 
 
-Run the command `python -m pytest --cov=api tests/`. A coverage report will be generated within `./docs/coverage.html` once the tests are completed.
+In order to the run the tests inside the Docker container, run the command `docker ps` and copy the container ID. Then run the command `docker exec -it {container ID} sh`, replacing the `{container ID}` with the ID gathered from the previous command. Then run the command `python -m pytest --cov=api tests/`. A coverage report will be generated within `./docs/coverage.html` once the tests are completed.
 
 Travis CI is being utilized to automate testing, you can find the instance [here](https://travis-ci.org/github/Jailoodu/RestfulMarketing).
 
