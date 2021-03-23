@@ -2,7 +2,8 @@ from api.api import api
 from flask_restplus import Resource
 from flask import request, jsonify, make_response, Response
 from werkzeug.utils import secure_filename
-from api.implementation import upload_file, download_file
+from api.implementation import upload_file, download_file, delete_file
+import sys
 
 # namespace sets the endpoints with a prefix of /users
 namespace = api.namespace('files', description='Operations on marketing resources')
@@ -34,3 +35,12 @@ class MarketingCollectionDownload(Resource):
             return None, 400
         return None, 200
 
+@namespace.route('/delete')
+class MarketingCollectionDelete(Resource):
+    @api.doc(responses = {204: 'File deleted', 400: 'Error occurred'})
+    def delete(self):
+        """
+        Delete file
+        """
+        delete_file(request.json)
+        return None, 204

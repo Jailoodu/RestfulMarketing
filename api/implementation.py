@@ -1,4 +1,4 @@
-from api.storage_utils import upload, download
+from api.storage_utils import upload, download, delete
 import os.path
 from os import path
 
@@ -18,4 +18,8 @@ def upload_file(data):
 def download_file(data):
     file = data["file"]
     return download(file)
+
+def delete_file(data):
+    file = data["file"]
+    return delete(file)
     

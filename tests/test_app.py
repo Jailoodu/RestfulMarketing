@@ -59,14 +59,16 @@ def test_upload_negative():
 
 def test_delete_file_fail():
     """
-    DELETE /api/files/{file_id}
+    DELETE /api/files/delete
     Requirements: F-34
     """
     # A test client configured for testing
     with flask_app.test_client() as test_client:
-        response = test_client.delete('/api/files/file_id')
+        response = test_client.post('/api/files/upload', json={"file":".gitignore"})
+        assert response.status_code == 201
+        response = test_client.delete('/api/files/delete', json={"file":".gitignore"})
         assert response.status_code == 204
-        assert response.status == "204 No Content"
+        assert response.status == "204 NO CONTENT"
 
 def test_edit_fail():
     """
