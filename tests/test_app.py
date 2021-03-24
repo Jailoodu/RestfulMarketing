@@ -81,12 +81,12 @@ def test_edit_fail():
         assert response.status_code == 204
         assert response.status == "204 No Content"
 
-def test_post_content_fail():
+def test_send_email():
     """
-    POST /api/marketing/post
+    POST /api/share/email
     """
     # A test client configured for testing
     with flask_app.test_client() as test_client:
-        response = test_client.put('/api/marketing/post', json={"platform":"reddit", "id": "img.jpg"})
-        assert response.status_code == 201
-        assert response.status == "201 Created"
+        response = test_client.post('/api/share/email', json={"to":"jason.loodu@gmail.com", "subject": "Test email", "text":"Example message"})
+        assert response.status_code == 200
+        assert response.status == "200 OK"

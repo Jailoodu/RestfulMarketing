@@ -1,4 +1,4 @@
-from api.storage_utils import upload, download, delete
+from api.storage_utils import upload, download, delete, email
 import os.path
 from os import path
 
@@ -22,4 +22,13 @@ def download_file(data):
 def delete_file(data):
     file = data["file"]
     return delete(file)
+
+def send_email(data):
+    recipient_list = data["to"]
+    subject = data["subject"]
+    text = data["text"]
+    res = email(recipient_list, subject, text) 
+    if res.status_code == 200:
+        return 0
+    return 1
     
