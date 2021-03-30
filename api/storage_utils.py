@@ -1,6 +1,7 @@
 from google.cloud import storage
 import ntpath
 import requests
+import os
 
 """
     Upload a file to GCP storage
@@ -62,10 +63,15 @@ def delete(filename):
     blob.delete()
 
 def email(to, subject, text):
-	return requests.post(
-		"https://api.mailgun.net/v3/sandboxfc3ae9aaf5e94106ab5b5d35da585230.mailgun.org/messages",
-		auth=("api", "b8566d102b4fabacb3820f51ec2b40c0-1553bd45-9ec13e56"),
-		data={"from": "Excited User <mailgun@sandboxfc3ae9aaf5e94106ab5b5d35da585230.mailgun.org>",
+    key = os.getenv('KEY')
+    domain = os.getenv('DOMAIN')
+
+    addr = "https://api.mailgun.net/v3/" + domain + "/messages"
+    from_user = "The Company <mailgun@" + domain + ">"
+    return requests.post(
+		addr,
+		auth=("api", key),
+		data={"from": from_user,
 			"to": [to],
 			"subject": subject,
 			"text": text})
